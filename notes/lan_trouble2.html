@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content=
+"HTML Tidy for HTML5 for Linux version 5.6.0">
+<title>jlj: home: notes: LAN troubleshooting, Part 2</title>
+<link rel="stylesheet" type="text/css" href="../screen.css">
+</head>
+<body>
+<h1>§ LAN troubleshooting, Part 2</h1>
+<p>UPDATE: This has been fixed for a while now, but it took me a lot longer
+to track down than I care to admit. The problem? The kit from my ISP used
+the default network of 192.168.0.0/24, and OpenWRT uses 192.168.1.0/24 by
+default. And I hadn't updated my ufw configuration. As soon as I did that,
+presto! A working LAN. <em>sigh</em></p>
+<h2>§ Nmap: more thorough</h2>
+<p><a href="./lan_trouble.html">Part 1</a></p>
+<pre>
+1294 0 jj@ALICE:~$ nmap -Pn -A -p- --reason -vvvvvv BOB
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-09-19 14:12 BST
+NSE: Loaded 151 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 14:12
+Completed NSE at 14:12, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 14:12
+Completed NSE at 14:12, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 14:12
+Completed NSE at 14:12, 0.00s elapsed
+Initiating Parallel DNS resolution of 1 host. at 14:12
+Completed Parallel DNS resolution of 1 host. at 14:12, 0.03s elapsed
+DNS resolution of 1 IPs took 0.04s. Mode: Async [#: 1, OK: 1, NX: 0, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating Connect Scan at 14:12
+Scanning eee.lan (BOB) [65535 ports]
+Connect Scan Timing: About 0.31% done
+Connect Scan Timing: About 0.53% done
+Connect Scan Timing: About 0.76% done
+Connect Scan Timing: About 0.98% done
+Connect Scan Timing: About 1.21% done; ETC: 17:51 (3:37:09 remaining)
+Connect Scan Timing: About 5.88% done; ETC: 17:51 (3:26:08 remaining)
+Connect Scan Timing: About 10.84% done; ETC: 17:50 (3:15:11 remaining)
+Connect Scan Timing: About 15.85% done; ETC: 17:50 (3:04:11 remaining)
+Connect Scan Timing: About 20.86% done; ETC: 17:50 (2:53:12 remaining)
+Connect Scan Timing: About 25.86% done; ETC: 17:50 (2:42:14 remaining)
+Connect Scan Timing: About 30.87% done; ETC: 17:50 (2:31:17 remaining)
+Connect Scan Timing: About 35.88% done; ETC: 17:50 (2:20:18 remaining)
+Connect Scan Timing: About 40.89% done; ETC: 17:50 (2:09:21 remaining)
+Connect Scan Timing: About 45.89% done; ETC: 17:50 (1:58:24 remaining)
+Connect Scan Timing: About 50.90% done; ETC: 17:50 (1:47:26 remaining)
+Connect Scan Timing: About 55.92% done; ETC: 17:50 (1:36:27 remaining)
+Connect Scan Timing: About 60.94% done; ETC: 17:50 (1:25:29 remaining)
+Connect Scan Timing: About 65.95% done; ETC: 17:50 (1:14:31 remaining)
+Connect Scan Timing: About 70.96% done; ETC: 17:50 (1:03:33 remaining)
+Connect Scan Timing: About 75.97% done; ETC: 17:50 (0:52:35 remaining)
+Connect Scan Timing: About 80.97% done; ETC: 17:50 (0:41:38 remaining)
+Connect Scan Timing: About 85.98% done; ETC: 17:50 (0:30:41 remaining)
+Connect Scan Timing: About 90.98% done; ETC: 17:50 (0:19:44 remaining)
+Connect Scan Timing: About 95.99% done; ETC: 17:50 (0:08:47 remaining)
+Completed Connect Scan at 17:50, 13130.84s elapsed (65535 total ports)
+Initiating Service scan at 17:50
+NSE: Script scanning BOB.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 17:50
+Completed NSE at 17:50, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 17:50
+Completed NSE at 17:50, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 17:50
+Completed NSE at 17:50, 0.00s elapsed
+Nmap scan report for eee.lan (BOB)
+Host is up, received user-set.
+All 65535 scanned ports on eee.lan (BOB) are filtered <strong>because of 65535 no-responses</strong>
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 17:50
+Completed NSE at 17:50, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 17:50
+Completed NSE at 17:50, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 17:50
+Completed NSE at 17:50, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 13131.71 seconds
+</pre>
+<hr>
+<a href="../index.html">jlj: home</a> » <a href="./index.html">jlj:
+notes</a><br>
+<br>
+<em>Last modified: Tue 22 Dec 13:56:02 BST 2020</em> — <a href=
+"mailto:jlj@ctrl-c.club">jlj@ctrl-c.club</a>
+</body>
+</html>

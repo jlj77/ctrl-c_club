@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content=
+"HTML Tidy for HTML5 for Linux version 5.6.0">
+<title>jlj: home: notes: LAN troubleshooting</title>
+<link rel="stylesheet" type="text/css" href="../screen.css">
+</head>
+<body>
+<h1>§ LAN troubleshooting</h1>
+<h2>§ General set-up</h2>
+<ul>
+<li>ALICE = private IP of main desktop</li>
+<li>BOB = private IP of netbook, with sshd confirmed up and
+running, <em>eee.lan</em> shown with that IP in OpenWrt's Overview
+page</li>
+<li><a href="./openwrt-firewall-summary.txt">OpenWrt's Firewall
+Summary page</a> (like <code>iptables -L</code>, I believe)</li>
+</ul>
+<hr>
+<pre>
+1217 0 jj@ALICE:~$ nmap BOB
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-09-18 17:13 BST
+Note: Host seems down. If it is really up, but blocking our ping probes, try -Pn
+Nmap done: 1 IP address (0 hosts up) scanned in 3.07 seconds
+
+1218 0 jj@ALICE:~$ nmap -Pn BOB
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-09-18 17:14 BST
+Nmap scan report for eee.lan (BOB)
+Host is up.
+All 1000 scanned ports on eee.lan (BOB) are filtered
+
+Nmap done: 1 IP address (1 host up) scanned in 201.40 seconds
+
+1219 0 jj@ALICE:~$ telnet BOB 22
+Trying BOB...
+^C
+
+1220 130 jj@ALICE:~$ ping BOB
+PING BOB (BOB) 56(84) bytes of data.
+64 bytes from BOB: icmp_seq=1 ttl=64 time=13.2 ms
+64 bytes from BOB: icmp_seq=2 ttl=64 time=1.49 ms
+^C
+--- BOB ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 1.493/7.355/13.218/5.862 ms
+
+1221 0 jj@ALICE:~$ 
+</pre>
+<hr>
+<h2>§ Next...</h2>
+<ul>
+<li>OpenWrt docs say it doesn't filter by default, but...</li>
+<li>It seems to be, so I need to read up on iptables and tackle
+that wall of text that is the firewall rules</li>
+<li>Figure out logging on the router, to make future
+troubleshooting easier</li>
+<li>Apply this new knowledge to the ufw instance on my
+desktop...</li>
+<li>Right now, I can bridge LXD containers to my LAN, but only when
+ufw is disabled</li>
+<li>I'm thinking I should be able to write some rules in a
+<em>before</em> file to allow bridging traffic, but, again, my
+f/w-fu is weak at the mo</li>
+</ul>
+<hr>
+<a href="../index.html">jlj: home</a> » <a href="./index.html">jlj:
+notes</a><br>
+<br>
+<em>Last modified: Fri 18 Sep 20:55:02 BST 2020</em> — <a href=
+"mailto:jlj@ctrl-c.club">jlj@ctrl-c.club</a>
+</body>
+</html>

@@ -1,0 +1,11 @@
+I might revive Cockpit. But I'll probably try to get Splunk to serve my monitoring needs, along with Grafana: then it's CPD too.
+Multipass is still in the mix, but falling by the wayside. I've picked up Docker now, because docker-splunk is just so simple and powerful. It's jumped my troubleshooting game an order of magnitude!
+I'm looking at docker-vault now too, for an upcoming demo.
+Oh, and docker-splunk has killed my desire to run any sort of Splunk cluster natively; I've got an All-In-One instance on the LAN, and that's enough, for playing.
+- I'm looking to replicate my Jitsi Meet dashboard, currently in Grafana, in Splunk, for CPD.
+The Consul Engineering Team have released an official Grafana dashboard, backed by Prometheus. I want to translate this to one backed by InfluxDB; an engineer suggested that translating PromQL to IFQL is fairly straightforward.
+I want to start monitoring the expiry dates of all the certificates I'm using in my environment.
+Also re Consul, I want to get ACLs working in a professional manner:
+- So, more locked down than in my current runbook; and
+- In such a way that the associated tokens are automatically rotated.
+Also re CPD, I'm considering going for Consul Associate. I'll hold off for a bit, though, as HashiCorp is in the middle of switching exam proctors, as I understand it.

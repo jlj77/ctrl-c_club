@@ -1,0 +1,2534 @@
+# Apologies for the format; saving the page as HTML obviously preserved the
+# scripting instead of its output, so text it is.
+
+OpenWrt <#>
+
+  * Status <#>
+      o Overview <http://192.168.1.1/cgi-bin/luci/admin/status/overview>
+      o Firewall <http://192.168.1.1/cgi-bin/luci/admin/status/iptables>
+      o Routes <http://192.168.1.1/cgi-bin/luci/admin/status/routes>
+      o System Log <http://192.168.1.1/cgi-bin/luci/admin/status/syslog>
+      o Kernel Log <http://192.168.1.1/cgi-bin/luci/admin/status/dmesg>
+      o Processes <http://192.168.1.1/cgi-bin/luci/admin/status/processes>
+      o Realtime Graphs
+        <http://192.168.1.1/cgi-bin/luci/admin/status/realtime>
+  * System <#>
+      o System <http://192.168.1.1/cgi-bin/luci/admin/system/system>
+      o Administration <http://192.168.1.1/cgi-bin/luci/admin/system/admin>
+      o Software <http://192.168.1.1/cgi-bin/luci/admin/system/opkg>
+      o Startup <http://192.168.1.1/cgi-bin/luci/admin/system/startup>
+      o Scheduled Tasks
+        <http://192.168.1.1/cgi-bin/luci/admin/system/crontab>
+      o LED Configuration
+        <http://192.168.1.1/cgi-bin/luci/admin/system/leds>
+      o Backup / Flash Firmware
+        <http://192.168.1.1/cgi-bin/luci/admin/system/flash>
+      o Reboot <http://192.168.1.1/cgi-bin/luci/admin/system/reboot>
+  * Network <#>
+      o Interfaces <http://192.168.1.1/cgi-bin/luci/admin/network/network>
+      o Wireless <http://192.168.1.1/cgi-bin/luci/admin/network/wireless>
+      o Switch <http://192.168.1.1/cgi-bin/luci/admin/network/switch>
+      o DHCP and DNS <http://192.168.1.1/cgi-bin/luci/admin/network/dhcp>
+      o Hostnames <http://192.168.1.1/cgi-bin/luci/admin/network/hosts>
+      o Static Routes <http://192.168.1.1/cgi-bin/luci/admin/network/routes>
+      o Diagnostics
+        <http://192.168.1.1/cgi-bin/luci/admin/network/diagnostics>
+      o Firewall <http://192.168.1.1/cgi-bin/luci/admin/network/firewall>
+  * Logout <http://192.168.1.1/cgi-bin/luci/admin/logout>
+
+Refreshing
+
+
+    Firewall Status
+
+Hide empty chains Reset Counters Restart Firewall
+
+  * IPv4 Firewall <#>
+  * IPv6 Firewall <#>
+
+
+      Table: Filter
+
+
+        Chain /INPUT/ (Policy: /ACCEPT/, 2 Packets, 104 B Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+9.41 K
+840.31 KB
+ACCEPT
+all
+lo
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+159.46 K
+17.39 MB
+input_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom input rule chain
+85.08 K
+10.79 MB
+ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+ctstate RELATED,ESTABLISHED
+-
+12.28 K
+503.19 KB
+syn_flood
+tcp
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+tcp flags:0x17/0x02
+-
+52.25 K
+5.56 MB
+zone_lan_input
+all
+br-lan
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+22.13 K
+1.04 MB
+zone_wan_input
+all
+eth1.2
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /FORWARD/ (Policy: /DROP/, 0 Packets, 0 B Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+16.99 M
+14.80 GB
+forwarding_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom forwarding rule chain
+16.93 M
+14.77 GB
+ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+ctstate RELATED,ESTABLISHED
+-
+63.15 K
+21.77 MB
+zone_lan_forward
+all
+br-lan
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+0 
+0 B
+zone_wan_forward
+all
+eth1.2
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+0 
+0 B
+reject
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /OUTPUT/ (Policy: /ACCEPT/, 0 Packets, 0 B Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+9.41 K
+840.31 KB
+ACCEPT
+all
+*
+lo
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+145.06 K
+22.67 MB
+output_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom output rule chain
+76.55 K
+17.71 MB
+ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+ctstate RELATED,ESTABLISHED
+-
+73 
+20.05 KB
+zone_lan_output
+all
+*
+br-lan
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+68.44 K
+4.94 MB
+zone_wan_output
+all
+*
+eth1.2
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /forwarding_lan_rule/ (1 References)
+
+          * Chain zone_lan_forward, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /forwarding_rule/ (1 References)
+
+          * Chain FORWARD, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /forwarding_wan_rule/ (1 References)
+
+          * Chain zone_wan_forward, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /input_lan_rule/ (1 References)
+
+          * Chain zone_lan_input, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /input_rule/ (1 References)
+
+          * Chain INPUT, Rule #2
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /input_wan_rule/ (1 References)
+
+          * Chain zone_wan_input, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /output_lan_rule/ (1 References)
+
+          * Chain zone_lan_output, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /output_rule/ (1 References)
+
+          * Chain OUTPUT, Rule #2
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /output_wan_rule/ (1 References)
+
+          * Chain zone_wan_output, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /reject/ (3 References)
+
+          * Chain FORWARD, Rule #5
+          * Chain zone_wan_dest_REJECT, Rule #1
+          * Chain zone_wan_src_REJECT, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+21.22 K
+880.19 KB
+REJECT
+tcp
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+reject-with tcp-reset
+-
+867 
+158.22 KB
+REJECT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+reject-with icmp-port-unreachable
+-
+
+
+        Chain /syn_flood/ (1 References)
+
+          * Chain INPUT, Rule #4
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+12.28 K
+503.19 KB
+RETURN
+tcp
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+tcp flags:0x17/0x02 limit: avg 25/sec burst 50
+-
+0 
+0 B
+DROP
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /zone_lan_dest_ACCEPT/ (4 References)
+
+          * Chain zone_lan_forward, Rule #4
+          * Chain zone_lan_output, Rule #2
+          * Chain zone_wan_forward, Rule #2
+          * Chain zone_wan_forward, Rule #3
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+73 
+20.05 KB
+ACCEPT
+all
+*
+br-lan
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /zone_lan_forward/ (1 References)
+
+          * Chain FORWARD, Rule #3
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+63.15 K
+21.77 MB
+forwarding_lan_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom lan forwarding rule chain
+63.15 K
+21.77 MB
+zone_wan_dest_ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Zone lan to wan forwarding policy
+0 
+0 B
+ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+ctstate DNAT
+Accept port forwards
+0 
+0 B
+zone_lan_dest_ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /zone_lan_input/ (1 References)
+
+          * Chain INPUT, Rule #5
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+52.25 K
+5.56 MB
+input_lan_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom lan input rule chain
+0 
+0 B
+ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+ctstate DNAT
+Accept port redirections
+52.25 K
+5.56 MB
+zone_lan_src_ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /zone_lan_output/ (1 References)
+
+          * Chain OUTPUT, Rule #4
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+73 
+20.05 KB
+output_lan_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom lan output rule chain
+73 
+20.05 KB
+zone_lan_dest_ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /zone_lan_src_ACCEPT/ (1 References)
+
+          * Chain zone_lan_input, Rule #3
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+52.25 K
+5.56 MB
+ACCEPT
+all
+br-lan
+*
+0.0.0.0/0
+0.0.0.0/0
+ctstate NEW,UNTRACKED
+-
+
+
+        Chain /zone_wan_dest_ACCEPT/ (2 References)
+
+          * Chain zone_lan_forward, Rule #2
+          * Chain zone_wan_output, Rule #2
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+4.34 K
+261.97 KB
+DROP
+all
+*
+eth1.2
+0.0.0.0/0
+0.0.0.0/0
+ctstate INVALID
+Prevent NAT leakage
+127.24 K
+26.45 MB
+ACCEPT
+all
+*
+eth1.2
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /zone_wan_dest_REJECT/ (1 References)
+
+          * Chain zone_wan_forward, Rule #5
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+0 
+0 B
+reject
+all
+*
+eth1.2
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /zone_wan_forward/ (1 References)
+
+          * Chain FORWARD, Rule #4
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+0 
+0 B
+forwarding_wan_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom wan forwarding rule chain
+0 
+0 B
+zone_lan_dest_ACCEPT
+esp
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Allow-IPSec-ESP
+0 
+0 B
+zone_lan_dest_ACCEPT
+udp
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+udp dpt:500
+Allow-ISAKMP
+0 
+0 B
+ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+ctstate DNAT
+Accept port forwards
+0 
+0 B
+zone_wan_dest_REJECT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /zone_wan_input/ (1 References)
+
+          * Chain INPUT, Rule #6
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+22.13 K
+1.04 MB
+input_wan_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom wan input rule chain
+7 
+2.00 KB
+ACCEPT
+udp
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+udp dpt:68
+Allow-DHCP-Renew
+38 
+1.45 KB
+ACCEPT
+icmp
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+icmptype 8
+Allow-Ping
+0 
+0 B
+ACCEPT
+2
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Allow-IGMP
+0 
+0 B
+ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+ctstate DNAT
+Accept port redirections
+22.09 K
+1.04 MB
+zone_wan_src_REJECT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /zone_wan_output/ (1 References)
+
+          * Chain OUTPUT, Rule #5
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+68.44 K
+4.94 MB
+output_wan_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom wan output rule chain
+68.44 K
+4.94 MB
+zone_wan_dest_ACCEPT
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /zone_wan_src_REJECT/ (1 References)
+
+          * Chain zone_wan_input, Rule #6
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+22.09 K
+1.04 MB
+reject
+all
+eth1.2
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+      Table: NAT
+
+
+        Chain /PREROUTING/ (Policy: /ACCEPT/, 170246 Packets, 45.53 MB
+        Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+170.25 K
+45.53 MB
+prerouting_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom prerouting rule chain
+157.10 K
+44.86 MB
+zone_lan_prerouting
+all
+br-lan
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+13.14 K
+674.60 KB
+zone_wan_prerouting
+all
+eth1.2
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /INPUT/ (Policy: /ACCEPT/, 41460 Packets, 2.97 MB Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /OUTPUT/ (Policy: /ACCEPT/, 68054 Packets, 4.93 MB Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /POSTROUTING/ (Policy: /ACCEPT/, 335 Packets, 42.45 KB
+        Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+129.23 K
+22.42 MB
+postrouting_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom postrouting rule chain
+32 
+7.14 KB
+zone_lan_postrouting
+all
+*
+br-lan
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+128.90 K
+22.38 MB
+zone_wan_postrouting
+all
+*
+eth1.2
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /postrouting_lan_rule/ (1 References)
+
+          * Chain zone_lan_postrouting, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /postrouting_rule/ (1 References)
+
+          * Chain POSTROUTING, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /postrouting_wan_rule/ (1 References)
+
+          * Chain zone_wan_postrouting, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /prerouting_lan_rule/ (1 References)
+
+          * Chain zone_lan_prerouting, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /prerouting_rule/ (1 References)
+
+          * Chain PREROUTING, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /prerouting_wan_rule/ (1 References)
+
+          * Chain zone_wan_prerouting, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /zone_lan_postrouting/ (1 References)
+
+          * Chain POSTROUTING, Rule #2
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+32 
+7.14 KB
+postrouting_lan_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom lan postrouting rule chain
+
+
+        Chain /zone_lan_prerouting/ (1 References)
+
+          * Chain PREROUTING, Rule #2
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+157.10 K
+44.86 MB
+prerouting_lan_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom lan prerouting rule chain
+
+
+        Chain /zone_wan_postrouting/ (1 References)
+
+          * Chain POSTROUTING, Rule #3
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+128.90 K
+22.38 MB
+postrouting_wan_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom wan postrouting rule chain
+128.90 K
+22.38 MB
+MASQUERADE
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+-
+
+
+        Chain /zone_wan_prerouting/ (1 References)
+
+          * Chain PREROUTING, Rule #3
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+13.14 K
+674.60 KB
+prerouting_wan_rule
+all
+*
+*
+0.0.0.0/0
+0.0.0.0/0
+-
+Custom wan prerouting rule chain
+
+
+      Table: Mangle
+
+
+        Chain /PREROUTING/ (Policy: /ACCEPT/, 17227895 Packets, 14.84 GB
+        Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /INPUT/ (Policy: /ACCEPT/, 168869 Packets, 18.23 MB Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /FORWARD/ (Policy: /ACCEPT/, 16992260 Packets, 14.80 GB
+        Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+36.97 K
+2.26 MB
+TCPMSS
+tcp
+*
+eth1.2
+0.0.0.0/0
+0.0.0.0/0
+tcp flags:0x06/0x02 TCPMSS clamp to PMTU
+Zone wan MTU fixing
+35.63 K
+2.11 MB
+TCPMSS
+tcp
+eth1.2
+*
+0.0.0.0/0
+0.0.0.0/0
+tcp flags:0x06/0x02 TCPMSS clamp to PMTU
+Zone wan MTU fixing
+
+
+        Chain /OUTPUT/ (Policy: /ACCEPT/, 154477 Packets, 23.51 MB Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /POSTROUTING/ (Policy: /ACCEPT/, 17142406 Packets, 14.82
+        GB Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+      Table: Filter
+
+
+        Chain /INPUT/ (Policy: /ACCEPT/, 0 Packets, 0 B Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+8 
+1.74 KB
+ACCEPT
+all
+lo
+*
+::/0
+::/0
+-
+-
+15.89 K
+1.28 MB
+input_rule
+all
+*
+*
+::/0
+::/0
+-
+Custom input rule chain
+31 
+4.34 KB
+ACCEPT
+all
+*
+*
+::/0
+::/0
+ctstate RELATED,ESTABLISHED
+-
+1 
+80 B
+syn_flood
+tcp
+*
+*
+::/0
+::/0
+tcp flags:0x17/0x02
+-
+15.86 K
+1.27 MB
+zone_lan_input
+all
+br-lan
+*
+::/0
+::/0
+-
+-
+3 
+152 B
+zone_wan_input
+all
+eth1.2
+*
+::/0
+::/0
+-
+-
+
+
+        Chain /FORWARD/ (Policy: /DROP/, 0 Packets, 0 B Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+0 
+0 B
+forwarding_rule
+all
+*
+*
+::/0
+::/0
+-
+Custom forwarding rule chain
+0 
+0 B
+ACCEPT
+all
+*
+*
+::/0
+::/0
+ctstate RELATED,ESTABLISHED
+-
+0 
+0 B
+zone_lan_forward
+all
+br-lan
+*
+::/0
+::/0
+-
+-
+0 
+0 B
+zone_wan_forward
+all
+eth1.2
+*
+::/0
+::/0
+-
+-
+0 
+0 B
+reject
+all
+*
+*
+::/0
+::/0
+-
+-
+
+
+        Chain /OUTPUT/ (Policy: /ACCEPT/, 16 Packets, 1.57 KB Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+8 
+1.74 KB
+ACCEPT
+all
+*
+lo
+::/0
+::/0
+-
+-
+17.39 K
+2.04 MB
+output_rule
+all
+*
+*
+::/0
+::/0
+-
+Custom output rule chain
+8.99 K
+1.33 MB
+ACCEPT
+all
+*
+*
+::/0
+::/0
+ctstate RELATED,ESTABLISHED
+-
+7.14 K
+524.70 KB
+zone_lan_output
+all
+*
+br-lan
+::/0
+::/0
+-
+-
+1.24 K
+185.92 KB
+zone_wan_output
+all
+*
+eth1.2
+::/0
+::/0
+-
+-
+
+
+        Chain /forwarding_lan_rule/ (1 References)
+
+          * Chain zone_lan_forward, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /forwarding_rule/ (1 References)
+
+          * Chain FORWARD, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /forwarding_wan_rule/ (1 References)
+
+          * Chain zone_wan_forward, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /input_lan_rule/ (1 References)
+
+          * Chain zone_lan_input, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /input_rule/ (1 References)
+
+          * Chain INPUT, Rule #2
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /input_wan_rule/ (1 References)
+
+          * Chain zone_wan_input, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /output_lan_rule/ (1 References)
+
+          * Chain zone_lan_output, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /output_rule/ (1 References)
+
+          * Chain OUTPUT, Rule #2
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /output_wan_rule/ (1 References)
+
+          * Chain zone_wan_output, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /reject/ (3 References)
+
+          * Chain FORWARD, Rule #5
+          * Chain zone_wan_dest_REJECT, Rule #1
+          * Chain zone_wan_src_REJECT, Rule #1
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+0 
+0 B
+REJECT
+tcp
+*
+*
+::/0
+::/0
+reject-with tcp-reset
+-
+0 
+0 B
+REJECT
+all
+*
+*
+::/0
+::/0
+reject-with icmp6-port-unreachable
+-
+
+
+        Chain /syn_flood/ (1 References)
+
+          * Chain INPUT, Rule #4
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+1 
+80 B
+RETURN
+tcp
+*
+*
+::/0
+::/0
+tcp flags:0x17/0x02 limit: avg 25/sec burst 50
+-
+0 
+0 B
+DROP
+all
+*
+*
+::/0
+::/0
+-
+-
+
+
+        Chain /zone_lan_dest_ACCEPT/ (4 References)
+
+          * Chain zone_lan_forward, Rule #3
+          * Chain zone_lan_output, Rule #2
+          * Chain zone_wan_forward, Rule #9
+          * Chain zone_wan_forward, Rule #10
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+7.14 K
+524.70 KB
+ACCEPT
+all
+*
+br-lan
+::/0
+::/0
+-
+-
+
+
+        Chain /zone_lan_forward/ (1 References)
+
+          * Chain FORWARD, Rule #3
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+0 
+0 B
+forwarding_lan_rule
+all
+*
+*
+::/0
+::/0
+-
+Custom lan forwarding rule chain
+0 
+0 B
+zone_wan_dest_ACCEPT
+all
+*
+*
+::/0
+::/0
+-
+Zone lan to wan forwarding policy
+0 
+0 B
+zone_lan_dest_ACCEPT
+all
+*
+*
+::/0
+::/0
+-
+-
+
+
+        Chain /zone_lan_input/ (1 References)
+
+          * Chain INPUT, Rule #5
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+15.86 K
+1.27 MB
+input_lan_rule
+all
+*
+*
+::/0
+::/0
+-
+Custom lan input rule chain
+15.86 K
+1.27 MB
+zone_lan_src_ACCEPT
+all
+*
+*
+::/0
+::/0
+-
+-
+
+
+        Chain /zone_lan_output/ (1 References)
+
+          * Chain OUTPUT, Rule #4
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+7.14 K
+524.70 KB
+output_lan_rule
+all
+*
+*
+::/0
+::/0
+-
+Custom lan output rule chain
+7.14 K
+524.70 KB
+zone_lan_dest_ACCEPT
+all
+*
+*
+::/0
+::/0
+-
+-
+
+
+        Chain /zone_lan_src_ACCEPT/ (1 References)
+
+          * Chain zone_lan_input, Rule #2
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+15.86 K
+1.27 MB
+ACCEPT
+all
+br-lan
+*
+::/0
+::/0
+ctstate NEW,UNTRACKED
+-
+
+
+        Chain /zone_wan_dest_ACCEPT/ (2 References)
+
+          * Chain zone_lan_forward, Rule #2
+          * Chain zone_wan_output, Rule #2
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+0 
+0 B
+DROP
+all
+*
+eth1.2
+::/0
+::/0
+ctstate INVALID
+Prevent NAT leakage
+1.24 K
+185.92 KB
+ACCEPT
+all
+*
+eth1.2
+::/0
+::/0
+-
+-
+
+
+        Chain /zone_wan_dest_REJECT/ (1 References)
+
+          * Chain zone_wan_forward, Rule #11
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+0 
+0 B
+reject
+all
+*
+eth1.2
+::/0
+::/0
+-
+-
+
+
+        Chain /zone_wan_forward/ (1 References)
+
+          * Chain FORWARD, Rule #4
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+0 
+0 B
+forwarding_wan_rule
+all
+*
+*
+::/0
+::/0
+-
+Custom wan forwarding rule chain
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 128 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Forward
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 129 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Forward
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 1 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Forward
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 2 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Forward
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 3 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Forward
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 4 code 0 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Forward
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 4 code 1 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Forward
+0 
+0 B
+zone_lan_dest_ACCEPT
+esp
+*
+*
+::/0
+::/0
+-
+Allow-IPSec-ESP
+0 
+0 B
+zone_lan_dest_ACCEPT
+udp
+*
+*
+::/0
+::/0
+udp dpt:500
+Allow-ISAKMP
+0 
+0 B
+zone_wan_dest_REJECT
+all
+*
+*
+::/0
+::/0
+-
+-
+
+
+        Chain /zone_wan_input/ (1 References)
+
+          * Chain INPUT, Rule #6
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+3 
+152 B
+input_wan_rule
+all
+*
+*
+::/0
+::/0
+-
+Custom wan input rule chain
+0 
+0 B
+ACCEPT
+udp
+*
+*
+fc00::/6
+fc00::/6
+udp dpt:546
+Allow-DHCPv6
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+fe80::/10
+::/0
+ipv6-icmptype 130 code 0
+Allow-MLD
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+fe80::/10
+::/0
+ipv6-icmptype 131 code 0
+Allow-MLD
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+fe80::/10
+::/0
+ipv6-icmptype 132 code 0
+Allow-MLD
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+fe80::/10
+::/0
+ipv6-icmptype 143 code 0
+Allow-MLD
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 128 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Input
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 129 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Input
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 1 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Input
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 2 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Input
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 3 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Input
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 4 code 0 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Input
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 4 code 1 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Input
+3 
+152 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 133 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Input
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 135 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Input
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 134 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Input
+0 
+0 B
+ACCEPT
+icmpv6
+*
+*
+::/0
+::/0
+ipv6-icmptype 136 limit: avg 1000/sec burst 5
+Allow-ICMPv6-Input
+0 
+0 B
+zone_wan_src_REJECT
+all
+*
+*
+::/0
+::/0
+-
+-
+
+
+        Chain /zone_wan_output/ (1 References)
+
+          * Chain OUTPUT, Rule #5
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+1.24 K
+185.92 KB
+output_wan_rule
+all
+*
+*
+::/0
+::/0
+-
+Custom wan output rule chain
+1.24 K
+185.92 KB
+zone_wan_dest_ACCEPT
+all
+*
+*
+::/0
+::/0
+-
+-
+
+
+        Chain /zone_wan_src_REJECT/ (1 References)
+
+          * Chain zone_wan_input, Rule #18
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+0 
+0 B
+reject
+all
+eth1.2
+*
+::/0
+::/0
+-
+-
+
+
+      Table: Mangle
+
+
+        Chain /PREROUTING/ (Policy: /ACCEPT/, 17293 Packets, 1.50 MB
+        Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /INPUT/ (Policy: /ACCEPT/, 15900 Packets, 1.28 MB Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /FORWARD/ (Policy: /ACCEPT/, 0 Packets, 0 B Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+0 
+0 B
+TCPMSS
+tcp
+*
+eth1.2
+::/0
+::/0
+tcp flags:0x06/0x02 TCPMSS clamp to PMTU
+Zone wan MTU fixing
+0 
+0 B
+TCPMSS
+tcp
+eth1.2
+*
+::/0
+::/0
+tcp flags:0x06/0x02 TCPMSS clamp to PMTU
+Zone wan MTU fixing
+
+
+        Chain /OUTPUT/ (Policy: /ACCEPT/, 17397 Packets, 2.04 MB Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+
+
+        Chain /POSTROUTING/ (Policy: /ACCEPT/, 17400 Packets, 2.04 MB
+        Traffic)
+
+Pkts.
+Traffic
+Target
+Prot.
+In
+Out
+Source
+Destination
+Options
+Comment
+No rules in this chain.
+Powered by LuCI openwrt-19.07 branch (git-20.247.75781-0d0ab01)
+<https://github.com/openwrt/luci> / OpenWrt 19.07.4 r11208-ce6496d796
+
+  * Administration <http://192.168.1.1/cgi-bin/luci/admin> |
+
